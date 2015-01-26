@@ -1,0 +1,21 @@
+{
+  "name": "Aethylred-kerberos",
+  "version": "0.0.1",
+  "author": "Aethylred",
+  "license": "Apache-2.0",
+  "summary": "A module for installing and managing kerberos",
+  "source": "https://github.com/Aethylred/puppet-kerberos",
+  "project_page": "https://github.com/Aethylred/puppet-kerberos",
+  "issues_url": "https://github.com/Aethylred/puppet-kerberos/issues",
+  "tags": ["kerberos"],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "12.04", "14.04" ]
+    }
+   ],
+  "dependencies": [
+    // { "name": "puppetlabs/stdlib",  "version_requirement": ">=4.2.0 <5.0.0" },
+    // { "name": "puppetlabs/apache",  "version_requirement": "1.0.1" },
+  ] 
+}
