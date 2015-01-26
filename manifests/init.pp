@@ -13,16 +13,19 @@ class kerberos (
     'present': {
       $package_ensure = 'installed'
       $file_ensure    = 'file'
+      $concat_ensure  = 'present'
       $dir_ensure     = 'directory'
     }
     'latest': {
       $package_ensure = 'latest'
       $file_ensure    = 'file'
+      $concat_ensure  = 'present'
       $dir_ensure     = 'directory'
     }
     default: {
       $package_ensure = 'absent'
       $file_ensure    = 'absent'
+      $concat_ensure  = 'absent'
       $dir_ensure     = 'absent'
     }
   }
@@ -32,7 +35,7 @@ class kerberos (
   }
 
   concat { 'kerberos_config':
-    ensure         => $ensure,
+    ensure         => $concat_ensure,
     path           => $config_file,
     warn           => '# This file is managed by Puppet, changes may be overwritten.',
     force          => true,

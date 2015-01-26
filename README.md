@@ -4,7 +4,7 @@ This is a Kerberos puppet module.
 
 # References
 
-* [Ivan Bayan krb5 Module](https://forge.puppetlabs.com/IvanBayan/krb5)
+* [Ivan Bayan krb5 Module](https://forge.puppetlabs.com/IvanBayan/krb5) close but no tests and was not sure about OS logic, or how configuration files were managed.
 
 # Licensing
 

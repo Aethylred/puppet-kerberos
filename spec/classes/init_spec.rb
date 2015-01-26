@@ -22,6 +22,32 @@ describe 'kerberos', :type => :class do
         'require'        => 'Package[krb5-user]'
       ) }
     end
+    describe 'when ensure is absent' do
+      let :params do
+        {
+          :ensure => 'absent',
+        }
+      end
+      it { should contain_class('kerberos::params') }
+      it { should contain_package('krb5-user').with_ensure('absent') }
+      it { should contain_concat('kerberos_config').with(
+        'ensure'         => 'absent',
+        'require'        => 'Package[krb5-user]'
+      ) }
+    end
+    describe 'when ensure is latest' do
+      let :params do
+        {
+          :ensure => 'latest',
+        }
+      end
+      it { should contain_class('kerberos::params') }
+      it { should contain_package('krb5-user').with_ensure('latest') }
+      it { should contain_concat('kerberos_config').with(
+        'ensure'         => 'present',
+        'require'        => 'Package[krb5-user]'
+      ) }
+    end
   end
 
   context 'on a RedHat OS' do
@@ -44,6 +70,34 @@ describe 'kerberos', :type => :class do
         'owner'          => 'root',
         'group'          => 'root',
         'mode'           => '0644',
+        'require'        => ['Package[krb5-libs]','Package[krb5-workstation]']
+      ) }
+    end
+    describe 'when ensure is absent' do
+      let :params do
+        {
+          :ensure => 'absent',
+        }
+      end
+      it { should contain_class('kerberos::params') }
+      it { should contain_package('krb5-libs').with_ensure('absent') }
+      it { should contain_package('krb5-workstation').with_ensure('absent') }
+      it { should contain_concat('kerberos_config').with(
+        'ensure'         => 'absent',
+        'require'        => ['Package[krb5-libs]','Package[krb5-workstation]']
+      ) }
+    end
+    describe 'when ensure is latest' do
+      let :params do
+        {
+          :ensure => 'latest',
+        }
+      end
+      it { should contain_class('kerberos::params') }
+      it { should contain_package('krb5-libs').with_ensure('latest') }
+      it { should contain_package('krb5-workstation').with_ensure('latest') }
+      it { should contain_concat('kerberos_config').with(
+        'ensure'         => 'present',
         'require'        => ['Package[krb5-libs]','Package[krb5-workstation]']
       ) }
     end
