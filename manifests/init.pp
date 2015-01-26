@@ -4,9 +4,21 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class kerberos (
-  $ensure      = 'present',
-  $package     = $::kerberos::params::package,
-  $config_file = $::kerberos::params::config_file
+  $ensure           = 'present',
+  $package          = $::kerberos::params::package,
+  $config_file      = $::kerberos::params::config_file,
+  $default_realm    = $::kerberos::params::default_realm,
+  $krb4_config      = $::kerberos::params::krb4_config,
+  $krb4_realms      = $::kerberos::params::krb4_realms,
+  $krb4_convert     = true,
+  $krb4_get_tickets = false,
+  $krb5_get_tickets = true,
+  $krb_run_aklog    = false,
+  $aklog_path       = undef,
+  $kdc_timesync     = '1',
+  $ccache_type      = '4',
+  $forwardable      = true,
+  $proxiable        = true
 ) inherits kerberos::params {
 
   case $ensure {
@@ -34,17 +46,34 @@ class kerberos (
     ensure => $package_ensure,
   }
 
-  concat { 'kerberos_config':
+  concat { 'krb5_config':
     ensure         => $concat_ensure,
     path           => $config_file,
     warn           => '# This file is managed by Puppet, changes may be overwritten.',
     force          => true,
-    ensure_newline => true,
+    ensure_newline => false,
     owner          => 'root',
     group          => 'root',
     mode           => '0644',
     require        => Package[$package]
   }
 
+  concat::fragment{'krb5_libdefaults':
+    target  => 'krb5_config',
+    content => template('kerberos/krb5.conf.fragments/libdefaults.erb'),
+    order   => '00AAA'
+  }
+
+  concat::fragment{'krb5_logging':
+    target  => 'krb5_config',
+    content => template('kerberos/krb5.conf.fragments/logging.erb'),
+    order   => '02AAA'
+  }
+
+  concat::fragment{'krb5_login':
+    target  => 'krb5_config',
+    content => template('kerberos/krb5.conf.fragments/login.erb'),
+    order   => '03AAA'
+  }
 
 }

@@ -1,0 +1,11 @@
+
+[libdefaults]
+  default_realm = <%= @default_realm %>
+
+# The following krb5.conf variables are only for MIT Kerberos.
+  krb4_config   = <%= @krb4_config %>
+  krb4_realms   = <%= @krb4_realms %>
+  kdc_timesync  = <%= @kdc_timesync %>
+  ccache_type   = <%= @ccache_type %>
+  forwardable   = <%= @forwardable %>
+  proxiable     = <%= @proxiable %>

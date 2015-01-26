@@ -1,0 +1,25 @@
+
+[login]
+  <%- if @krb4_convert -%>
+  krb4_convert     = true
+  <%- else -%>
+  krb4_convert     = false
+  <%- end -%>
+  <%- if @krb4_get_tickets -%>
+  krb4_get_tickets = true
+  <%- else -%>
+  krb4_get_tickets = false
+  <%- end -%>
+  <%- if @krb5_get_tickets -%>
+  krb5_get_tickets = true
+  <%- else -%>
+  krb5_get_tickets = false
+  <%- end -%>
+  <%- if @krb_run_aklog -%>
+  krb_run_aklog   = true
+  <%- else -%>
+  krb_run_aklog   = false
+  <%- end -%>
+  <%- if @aklog_path -%>
+  aklog_path      = <%= @aklog_path %>
+  <%- end -%>

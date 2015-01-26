@@ -14,7 +14,10 @@
 class kerberos::params {
 
 # Common values
-  $config_file = '/etc/krb5.conf'
+  $config_file   = '/etc/krb5.conf'
+  $default_realm = 'LOCAL'
+  $krb4_config   = '/etc/krb.conf'
+  $krb4_realms   = '/etc/krb.realms'
 
 # OS specific values
   case $::osfamily {
