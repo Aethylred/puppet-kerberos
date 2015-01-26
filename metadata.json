@@ -12,10 +12,22 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [ "12.04", "14.04" ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [ "Wheezy" ]
+    },
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease":[ "5.0", "6.0" ]
+    },
+    {
+      "operatingsystem":"CentOS",
+      "operatingsystemrelease":[ "5.0", "6.0" ]
     }
    ],
   "dependencies": [
-    // { "name": "puppetlabs/stdlib",  "version_requirement": ">=4.2.0 <5.0.0" },
-    // { "name": "puppetlabs/apache",  "version_requirement": "1.0.1" },
+    { "name": "puppetlabs/stdlib",  "version_requirement": ">=4.2.0 <5.0.0" },
+    { "name": "puppetlabs/concat", "version_requirement": ">=1.1.0 <2.0.0" }
   ] 
 }

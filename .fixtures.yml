@@ -4,8 +4,11 @@ fixtures:
     #   repo: 'git://github.com/puppetlabs/puppetlabs-apache.git'
     #   ref:  '1.0.1'
   forge_modules:
-    # stdlib:
-    #   repo: 'puppetlabs-stdlib'
-    #   ref:  '4.2.2'
+    stdlib:
+      repo: 'puppetlabs-stdlib'
+      ref:  '4.2.2'
+    concat:
+      repo: 'puppetlabs-concat'
+      ref:  '1.1.1'
   symlinks:
     kerberos: "#{source_dir}"

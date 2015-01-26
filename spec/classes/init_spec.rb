@@ -9,6 +9,18 @@ describe 'kerberos', :type => :class do
     end
     describe 'with no parameters' do
       it { should contain_class('kerberos::params') }
+      it { should contain_package('krb5-user').with_ensure('installed') }
+      it { should contain_concat('kerberos_config').with(
+        'ensure'         => 'present',
+        'path'           => '/etc/krb5.conf',
+        'warn'           => '# This file is managed by Puppet, changes may be overwritten.',
+        'force'          => true,
+        'ensure_newline' => true,
+        'owner'          => 'root',
+        'group'          => 'root',
+        'mode'           => '0644',
+        'require'        => 'Package[krb5-user]'
+      ) }
     end
   end
 
@@ -19,7 +31,22 @@ describe 'kerberos', :type => :class do
         :concat_basedir => '/dne',
       }
     end
-    it { should raise_error(Puppet::Error, /The kerberos Puppet module does not support RedHat family of operating systems/) }
+    describe 'with no parameters' do
+      it { should contain_class('kerberos::params') }
+      it { should contain_package('krb5-libs').with_ensure('installed') }
+      it { should contain_package('krb5-workstation').with_ensure('installed') }
+      it { should contain_concat('kerberos_config').with(
+        'ensure'         => 'present',
+        'path'           => '/etc/krb5.conf',
+        'warn'           => '# This file is managed by Puppet, changes may be overwritten.',
+        'force'          => true,
+        'ensure_newline' => true,
+        'owner'          => 'root',
+        'group'          => 'root',
+        'mode'           => '0644',
+        'require'        => ['Package[krb5-libs]','Package[krb5-workstation]']
+      ) }
+    end
   end
 
     context 'on an Unknown OS' do
