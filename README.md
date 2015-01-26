@@ -1,6 +1,7 @@
 # Kerberos
+[![Build Status](https://travis-ci.org/Aethylred/puppet-kerberos.svg?branch=master)](https://travis-ci.org/Aethylred/puppet-kerberos)
 
-This is a Kerberos puppet module.
+This Puppet module manages and installs MIT Kerberos 5 authentication.
 
 # References
 

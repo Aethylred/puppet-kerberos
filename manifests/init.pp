@@ -21,6 +21,15 @@ class kerberos (
   $proxiable        = true
 ) inherits kerberos::params {
 
+  validate_bool(
+    $krb4_convert,
+    $krb4_get_tickets,
+    $krb5_get_tickets,
+    $krb_run_aklog,
+    $forwardable,
+    $proxiable
+  )
+
   case $ensure {
     'present': {
       $package_ensure = 'installed'
