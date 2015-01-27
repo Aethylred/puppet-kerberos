@@ -10,15 +10,15 @@ class kerberos (
   $default_realm    = $::kerberos::params::default_realm,
   $krb4_config      = $::kerberos::params::krb4_config,
   $krb4_realms      = $::kerberos::params::krb4_realms,
-  $krb4_convert     = true,
+  $krb4_convert     = false,
   $krb4_get_tickets = false,
   $krb5_get_tickets = true,
   $krb_run_aklog    = false,
   $aklog_path       = undef,
   $kdc_timesync     = '1',
   $ccache_type      = '4',
-  $forwardable      = true,
-  $proxiable        = true
+  $forwardable      = false,
+  $proxiable        = false
 ) inherits kerberos::params {
 
   validate_bool(

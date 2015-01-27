@@ -47,10 +47,10 @@ describe 'kerberos', :type => :class do
         %r{^  ccache_type   = 4$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
-        %r{^  forwardable   = true$}
+        %r{^  forwardable   = false$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
-        %r{^  proxiable     = true$}
+        %r{^  proxiable     = false$}
       ) }
       it { should contain_concat__fragment('krb5_logging').with(
         'target' => 'krb5_config',
@@ -70,7 +70,7 @@ describe 'kerberos', :type => :class do
         %r{^  aklog_path      = .*$}
       ) }
       it { should contain_concat__fragment('krb5_login').with_content(
-        %r{^  krb4_convert     = true$}
+        %r{^  krb4_convert     = false$}
       ) }
       it { should contain_concat__fragment('krb5_login').with_content(
         %r{^  krb4_get_tickets = false$}
@@ -143,8 +143,8 @@ describe 'kerberos', :type => :class do
           :krb4_realms   => '/this/is/a/bad.idea.too',
           :kdc_timesync  => '66',
           :ccache_type   => '1',
-          :forwardable   => false,
-          :proxiable     => false
+          :forwardable   => true,
+          :proxiable     => true
         }
       end
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
@@ -163,16 +163,16 @@ describe 'kerberos', :type => :class do
         %r{^  ccache_type   = 1$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
-        %r{^  forwardable   = false$}
+        %r{^  forwardable   = true$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
-        %r{^  proxiable     = false$}
+        %r{^  proxiable     = true$}
       ) }
     end
     describe 'when customising the login settings' do
       let :params do
         {
-          :krb4_convert     => false,
+          :krb4_convert     => true,
           :krb4_get_tickets => true,
           :krb5_get_tickets => false,
           :krb_run_aklog    => true,
@@ -183,7 +183,7 @@ describe 'kerberos', :type => :class do
         %r{^  aklog_path      = /path/to/bin/aklog.sh$}
       ) }
       it { should contain_concat__fragment('krb5_login').with_content(
-        %r{^  krb4_convert     = false$}
+        %r{^  krb4_convert     = true$}
       ) }
       it { should contain_concat__fragment('krb5_login').with_content(
         %r{^  krb4_get_tickets = true$}
@@ -245,10 +245,10 @@ describe 'kerberos', :type => :class do
         %r{^  ccache_type   = 4$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
-        %r{^  forwardable   = true$}
+        %r{^  forwardable   = false$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
-        %r{^  proxiable     = true$}
+        %r{^  proxiable     = false$}
       ) }
       it { should contain_concat__fragment('krb5_logging').with(
         'target' => 'krb5_config',
@@ -268,7 +268,7 @@ describe 'kerberos', :type => :class do
         %r{^  aklog_path      = .*$}
       ) }
       it { should contain_concat__fragment('krb5_login').with_content(
-        %r{^  krb4_convert     = true$}
+        %r{^  krb4_convert     = false$}
       ) }
       it { should contain_concat__fragment('krb5_login').with_content(
         %r{^  krb4_get_tickets = false$}
@@ -329,8 +329,8 @@ describe 'kerberos', :type => :class do
           :krb4_realms   => '/this/is/a/bad.idea.too',
           :kdc_timesync  => '66',
           :ccache_type   => '1',
-          :forwardable   => false,
-          :proxiable     => false
+          :forwardable   => true,
+          :proxiable     => true
         }
       end
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
@@ -349,16 +349,16 @@ describe 'kerberos', :type => :class do
         %r{^  ccache_type   = 1$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
-        %r{^  forwardable   = false$}
+        %r{^  forwardable   = true$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
-        %r{^  proxiable     = false$}
+        %r{^  proxiable     = true$}
       ) }
     end
     describe 'when customising the login settings' do
       let :params do
         {
-          :krb4_convert     => false,
+          :krb4_convert     => true,
           :krb4_get_tickets => true,
           :krb5_get_tickets => false,
           :krb_run_aklog    => true,
@@ -369,7 +369,7 @@ describe 'kerberos', :type => :class do
         %r{^  aklog_path      = /path/to/bin/aklog.sh$}
       ) }
       it { should contain_concat__fragment('krb5_login').with_content(
-        %r{^  krb4_convert     = false$}
+        %r{^  krb4_convert     = true$}
       ) }
       it { should contain_concat__fragment('krb5_login').with_content(
         %r{^  krb4_get_tickets = true$}
