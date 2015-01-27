@@ -7,11 +7,12 @@ define kerberos::realm (
 ) {
 
   $upcase_name = upcase($name)
+  $order_name = regsubst($name, '\W', '')
 
   concat::fragment{"krb5_${upcase_name}_realm":
     target  => 'krb5_config',
     content => template('kerberos/krb5.conf.fragments/realm_entry.erb'),
-    order   => "04${upcase_name}"
+    order   => "04${order_name}"
   }
 
 }

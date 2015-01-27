@@ -24,7 +24,7 @@ describe 'kerberos::realm', :type => :define do
       end
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with(
         'target'  => 'krb5_config',
-        'order'   => "04EXAMPLE.ORG"
+        'order'   => '04exampleorg'
       ) }
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
         %r{^  EXAMPLE.ORG = \{$}
@@ -130,7 +130,7 @@ describe 'kerberos::realm', :type => :define do
       end
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with(
         'target'  => 'krb5_config',
-        'order'   => "04EXAMPLE.ORG"
+        'order'   => '04exampleorg'
       ) }
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
         %r{^  EXAMPLE.ORG = \{$}
