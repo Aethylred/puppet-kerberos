@@ -85,4 +85,16 @@ class kerberos (
     order   => '03AAA'
   }
 
+  concat::fragment{'krb5_realms':
+    target  => 'krb5_config',
+    content => template('kerberos/krb5.conf.fragments/realms.erb'),
+    order   => '04AAA'
+  }
+
+  concat::fragment{'krb5_domain_realm':
+    target  => 'krb5_config',
+    content => template('kerberos/krb5.conf.fragments/domain_realm.erb'),
+    order   => '05AAA'
+  }
+
 }

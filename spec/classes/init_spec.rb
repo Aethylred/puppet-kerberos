@@ -81,6 +81,20 @@ describe 'kerberos', :type => :class do
       it { should contain_concat__fragment('krb5_login').with_content(
         %r{^  krb_run_aklog   = false$}
       ) }
+      it { should contain_concat__fragment('krb5_realms').with(
+        'target' => 'krb5_config',
+        'order'  => '04AAA'
+      ) }
+      it { should contain_concat__fragment('krb5_realms').with_content(
+        %r{^\[realms\]$}
+      ) }
+      it { should contain_concat__fragment('krb5_domain_realm').with(
+        'target' => 'krb5_config',
+        'order'  => '05AAA'
+      ) }
+      it { should contain_concat__fragment('krb5_domain_realm').with_content(
+        %r{^\[domain_realm\]$}
+      ) }
     end
     describe 'when ensure is absent' do
       let :params do
@@ -153,6 +167,32 @@ describe 'kerberos', :type => :class do
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^  proxiable     = false$}
+      ) }
+    end
+    describe 'when customising the login settings' do
+      let :params do
+        {
+          :krb4_convert     => false,
+          :krb4_get_tickets => true,
+          :krb5_get_tickets => false,
+          :krb_run_aklog    => true,
+          :aklog_path       => '/path/to/bin/aklog.sh',
+        }
+      end
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  aklog_path      = /path/to/bin/aklog.sh$}
+      ) }
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  krb4_convert     = false$}
+      ) }
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  krb4_get_tickets = true$}
+      ) }
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  krb5_get_tickets = false$}
+      ) }
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  krb_run_aklog   = true$}
       ) }
     end
   end
@@ -313,6 +353,32 @@ describe 'kerberos', :type => :class do
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^  proxiable     = false$}
+      ) }
+    end
+    describe 'when customising the login settings' do
+      let :params do
+        {
+          :krb4_convert     => false,
+          :krb4_get_tickets => true,
+          :krb5_get_tickets => false,
+          :krb_run_aklog    => true,
+          :aklog_path       => '/path/to/bin/aklog.sh',
+        }
+      end
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  aklog_path      = /path/to/bin/aklog.sh$}
+      ) }
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  krb4_convert     = false$}
+      ) }
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  krb4_get_tickets = true$}
+      ) }
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  krb5_get_tickets = false$}
+      ) }
+      it { should contain_concat__fragment('krb5_login').with_content(
+        %r{^  krb_run_aklog   = true$}
       ) }
     end
   end
