@@ -383,7 +383,7 @@ describe 'kerberos', :type => :class do
     end
   end
 
-    context 'on an Unknown OS' do
+  context 'on an Unknown OS' do
     let :facts do
       {
         :osfamily       => 'Unknown',

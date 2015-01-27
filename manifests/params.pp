@@ -2,14 +2,6 @@
 #
 # This class manages shared prameters and variables for the kerberos module
 #
-# Parameters:
-#
-# Actions:
-#
-# Requires:
-#
-# Sample Usage:
-#
 # [Remember: No empty lines between comments and class definition]
 class kerberos::params {
 
