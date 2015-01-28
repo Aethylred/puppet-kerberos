@@ -1,5 +1,12 @@
 include kerberos
 
+kerberos::logging{'default': }
+
+kerberos::logging{'admin':
+  key   => 'admin_server',
+  value => 'FILE:/var/log/krb5/admin.log'
+}
+
 kerberos::realm{'example.org':
   kdc          => ['kerberos.example.org','krb5.example.org:80'],
   admin_server => 'master.kerberos.example.org',
