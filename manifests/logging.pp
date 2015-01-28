@@ -14,7 +14,7 @@ define kerberos::logging (
     '^STDERR$',
     '^CONSOLE$',
     '^DEVICE=.*$',
-    '^SYSLOG:?$'
+    '^SYSLOG(:.*)?$'
   ] )
 
   $order_name = regsubst($name, '\W', '')
