@@ -136,6 +136,28 @@ kerberos::domain_realm{'.example.org':
 #### `realm`
 This is a required parameter. This specifies realm that the domain maps to. The specified domain must be defined as a `kerberos::realm` resource.
 
+## `kerberos::logging`
+
+This resource defines a logging entry in the `[logging]` section of the Kerberos configuration file as described in the [documentation](http://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/kdc_conf.html#logging). Multiple entries are permitted allowing logging to the same output to different channels.
+
+### Usage
+
+The minimal usage will set up logging to syslog by default:
+
+```puppet
+include kerberos::logging
+```
+
+### Parameters
+
+#### `key`
+
+This sets which services are being logged. Only accepts the values `kdc`, `admin_server` or `default`. The default is `default`.
+
+#### `value`
+
+This specifies the destination for the log. Check the [logging documentation](http://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/kdc_conf.html#logging) for acceptable values. The default is `SYSLOG`.
+
 # References
 
 * [MIT Kerberos site](http://web.mit.edu/kerberos/)
