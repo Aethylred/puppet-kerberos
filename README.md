@@ -83,6 +83,10 @@ If set to `true` tickets will be forwardable. The default value is `false`.
 
 If set to `true` the principle will be allowed to obtain proxy tickets. The default value is `false`.
 
+#### `rdns`
+
+If this flag is `true`, reverse name lookup will be used in addition to forward name lookup to canonicalizing hostnames for use in service principal names. The default value is `true`.
+
 # Resources
 
 ## `kerberos::realm`
