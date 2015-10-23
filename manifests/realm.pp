@@ -1,9 +1,10 @@
 # Adds a realm definition to krb5.conf
 define kerberos::realm (
   $kdc,
-  $admin_server = undef,
-  $master_kdc   = undef,
-  $default_domain = undef
+  $admin_server   = undef,
+  $master_kdc     = undef,
+  $default_domain = undef,
+  $kpasswd_server = undef
 ) {
 
   $upcase_name = upcase($name)
