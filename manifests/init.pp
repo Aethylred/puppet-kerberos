@@ -18,7 +18,8 @@ class kerberos (
   $kdc_timesync     = '1',
   $ccache_type      = '4',
   $forwardable      = false,
-  $proxiable        = false
+  $proxiable        = false,
+  $rdns             = true
 ) inherits kerberos::params {
 
   validate_bool(
@@ -27,7 +28,8 @@ class kerberos (
     $krb5_get_tickets,
     $krb_run_aklog,
     $forwardable,
-    $proxiable
+    $proxiable,
+    $rdns
   )
 
   case $ensure {

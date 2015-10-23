@@ -52,6 +52,9 @@ describe 'kerberos', :type => :class do
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^  proxiable     = false$}
       ) }
+      it { should contain_concat__fragment('krb5_libdefaults').with_content(
+        %r{^  rdns          = true$}
+      ) }
       it { should contain_concat__fragment('krb5_logging').with(
         'target' => 'krb5_config',
         'order'  => '02AAA'
@@ -144,7 +147,8 @@ describe 'kerberos', :type => :class do
           :kdc_timesync  => '66',
           :ccache_type   => '1',
           :forwardable   => true,
-          :proxiable     => true
+          :proxiable     => true,
+          :rdns          => false,
         }
       end
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
@@ -167,6 +171,9 @@ describe 'kerberos', :type => :class do
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^  proxiable     = true$}
+      ) }
+      it { should contain_concat__fragment('krb5_libdefaults').with_content(
+        %r{^  rdns          = false$}
       ) }
     end
     describe 'when customising the login settings' do
@@ -250,6 +257,9 @@ describe 'kerberos', :type => :class do
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^  proxiable     = false$}
       ) }
+      it { should contain_concat__fragment('krb5_libdefaults').with_content(
+        %r{^  rdns          = true$}
+      ) }
       it { should contain_concat__fragment('krb5_logging').with(
         'target' => 'krb5_config',
         'order'  => '02AAA'
@@ -330,7 +340,8 @@ describe 'kerberos', :type => :class do
           :kdc_timesync  => '66',
           :ccache_type   => '1',
           :forwardable   => true,
-          :proxiable     => true
+          :proxiable     => true,
+          :rdns          => false,
         }
       end
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
@@ -353,6 +364,9 @@ describe 'kerberos', :type => :class do
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^  proxiable     = true$}
+      ) }
+      it { should contain_concat__fragment('krb5_libdefaults').with_content(
+        %r{^  rdns          = false$}
       ) }
     end
     describe 'when customising the login settings' do
