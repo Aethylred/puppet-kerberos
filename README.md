@@ -121,6 +121,10 @@ This specifies the domain used to expand hostnames. The default is undefined.
 
 This resource defines a domain to realm mapping entry in the `[domian_realm]` section of the Kerberos configuration file as described in the [documentation](http://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/krb5_conf.html#domain-realm).
 
+## `kerberos::kpasswd_server`
+
+This specifies the kpasswd server where password changes are performed. The default is undefined.
+
 ### Usage
 
 Each declaration maps the domain used in the `kerberos::domain_realm` declaration to the realm specified by the `realm` parameter:

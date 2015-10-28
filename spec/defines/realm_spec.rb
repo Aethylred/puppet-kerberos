@@ -41,6 +41,9 @@ describe 'kerberos::realm', :type => :define do
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').without_content(
         %r{^    default_domain = .*$}
       ) }
+      it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').without_content(
+        %r{^    kpasswd_server = .*$}
+      ) }
     end
     describe 'with multiple kdc servers' do
       let :params do
@@ -99,6 +102,20 @@ describe 'kerberos::realm', :type => :define do
       end
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
         %r{^    default_domain = example.org$}
+      ) }
+      it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
+        %r{^    kdc            = kerberos.example.org$}
+      ) }
+    end
+    describe 'with a kpasswd server' do
+      let :params do
+        {
+          :kdc            => 'kerberos.example.org',
+          :kpasswd_server => 'example.org'
+        }
+      end
+      it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
+        %r{^    kpasswd_server = example.org$}
       ) }
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
         %r{^    kdc            = kerberos.example.org$}
@@ -147,6 +164,9 @@ describe 'kerberos::realm', :type => :define do
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').without_content(
         %r{^    default_domain = .*$}
       ) }
+      it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').without_content(
+        %r{^    kpasswd_server = .*$}
+      ) }
     end
     describe 'with multiple kdc servers' do
       let :params do
@@ -205,6 +225,20 @@ describe 'kerberos::realm', :type => :define do
       end
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
         %r{^    default_domain = example.org$}
+      ) }
+      it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
+        %r{^    kdc            = kerberos.example.org$}
+      ) }
+    end
+    describe 'with a kpasswd server' do
+      let :params do
+        {
+          :kdc            => 'kerberos.example.org',
+          :kpasswd_server => 'example.org'
+        }
+      end
+      it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
+        %r{^    kpasswd_server = example.org$}
       ) }
       it {should contain_concat__fragment('krb5_EXAMPLE.ORG_realm').with_content(
         %r{^    kdc            = kerberos.example.org$}
