@@ -129,7 +129,7 @@ describe 'kerberos', :type => :class do
       let :params do
         {
           :package     => 'magic-krb5',
-          :config_file => '/this/is/a/bad.idea'
+          :config_file => '/this/is/a/bad.idea',
         }
       end
       it { should contain_package('magic-krb5') }
@@ -322,7 +322,7 @@ describe 'kerberos', :type => :class do
       let :params do
         {
           :package     => 'magic-krb5',
-          :config_file => '/this/is/a/bad.idea'
+          :config_file => '/this/is/a/bad.idea',
         }
       end
       it { should contain_package('magic-krb5') }
