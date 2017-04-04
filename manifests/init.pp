@@ -8,6 +8,8 @@ class kerberos (
   $package          = $::kerberos::params::package,
   $config_file      = $::kerberos::params::config_file,
   $default_realm    = $::kerberos::params::default_realm,
+  $dns_lookup_realm = false,
+  $dns_lookup_kdc   = false,
   $krb4_config      = $::kerberos::params::krb4_config,
   $krb4_realms      = $::kerberos::params::krb4_realms,
   $krb4_convert     = false,
@@ -19,7 +21,9 @@ class kerberos (
   $ccache_type      = '4',
   $forwardable      = false,
   $proxiable        = false,
-  $rdns             = true
+  $rdns             = true,
+  $ticket_lifetime  = undef,
+  $renew_lifetime   = undef
 ) inherits kerberos::params {
 
   validate_bool(
@@ -29,7 +33,9 @@ class kerberos (
     $krb_run_aklog,
     $forwardable,
     $proxiable,
-    $rdns
+    $rdns,
+    $dns_lookup_kdc,
+    $dns_lookup_realm
   )
 
   case $ensure {
