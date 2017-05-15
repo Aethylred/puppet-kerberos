@@ -35,6 +35,10 @@ This specifies a custom package or array of packages. The default is the standar
 
 Specifies the location of the Kerberos configuration file. The default is `/etc/krb5.conf`. Setting this parameter is not recommended, but included to support custom packages.
 
+#### `includedir_path`
+
+Specifies a directory that contains arbitrary configuration files to be loaded.  This is disabled by default, but can be enabled for custom settings that the module does not handle.  (ex: appdefaults)  Using this parameter is not recommended unless you have a specific use case.
+
 #### `default_realm`
 
 This sets the default realm for any domain that does not have a specific domain to realm mapping. The default value is `LOCAL`.

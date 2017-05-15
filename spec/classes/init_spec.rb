@@ -176,6 +176,16 @@ describe 'kerberos', :type => :class do
         %r{^  rdns          = false$}
       ) }
     end
+    describe 'when using an includedir' do
+      let :params do
+        {
+          :includedir_path => '/etc/krb5.conf.d/',
+        }
+      end
+      it { should contain_concat__fragment('krb5_includedir').with_content(
+        %r{^includedir_path /etc/krb5.conf.d$}
+      ) }
+    end
     describe 'when customising the login settings' do
       let :params do
         {
