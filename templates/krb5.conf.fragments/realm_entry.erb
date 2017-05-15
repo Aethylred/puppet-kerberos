@@ -1,11 +1,13 @@
 
   <%= @upcase_name %> = {
-    <%- if @kdc.kind_of?(Array) -%>
-      <%- Array(@kdc).each do |server| -%>
-    kdc            = <%= server %>
+    <%- if @kdc -%>
+      <%- if @kdc.kind_of?(Array) -%>
+        <%- Array(@kdc).each do |server| -%>
+      kdc            = <%= server %>
+        <%- end -%>
+      <%- else -%>
+      kdc            = <%= @kdc %>
       <%- end -%>
-    <%- else -%>
-    kdc            = <%= @kdc %>
     <%- end -%>
     <%- if @master_kdc -%>
     master_kdc     = <%= @master_kdc %>
