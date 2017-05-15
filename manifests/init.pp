@@ -7,6 +7,7 @@ class kerberos (
   $ensure           = 'present',
   $package          = $::kerberos::params::package,
   $config_file      = $::kerberos::params::config_file,
+  $includedir_path  = $::kerberos::params::includedir_path,
   $default_realm    = $::kerberos::params::default_realm,
   $dns_lookup_realm = false,
   $dns_lookup_kdc   = false,
@@ -73,6 +74,21 @@ class kerberos (
     group          => 'root',
     mode           => '0644',
     require        => Package[$package]
+  }
+
+  if $includedir_path != undef {
+    concat::fragment{'krb5_includedir':
+      target  => 'krb5_config',
+      content => "\nincludedir ${includedir_path}\n\n",
+      order   => '00001',
+    }
+
+    file { $includedir_path:
+      ensure => directory,
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0755',
+    }
   }
 
   concat::fragment{'krb5_libdefaults':
