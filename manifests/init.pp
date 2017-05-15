@@ -79,7 +79,7 @@ class kerberos (
   if $includedir_path != undef {
     concat::fragment{'krb5_includedir':
       target  => 'krb5_config',
-      content => "includedir ${includedir_path}\n\n",
+      content => "\nincludedir ${includedir_path}\n\n",
       order   => '00001',
     }
 
