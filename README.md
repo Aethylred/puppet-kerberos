@@ -103,6 +103,12 @@ kerberos::realm{'example.org':
 }
 ```
 
+If you have `dns_lookup_kdc` enabled, you do not have to specify a `kdc`.
+
+```puppet
+kerberos::realm{'example.org':
+}
+
 ### Parameters
 
 #### `kdc`

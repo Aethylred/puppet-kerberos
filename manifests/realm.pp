@@ -1,6 +1,6 @@
 # Adds a realm definition to krb5.conf
 define kerberos::realm (
-  $kdc,
+  $kdc            = undef,
   $admin_server   = undef,
   $master_kdc     = undef,
   $default_domain = undef,
