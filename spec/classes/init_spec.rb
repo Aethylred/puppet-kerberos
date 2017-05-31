@@ -28,7 +28,7 @@ describe 'kerberos', :type => :class do
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^\[libdefaults\]$}
       ) }
-      it { should contain_concat__fragment('krb5_libdefaults').with_content(
+      xit { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^# The following krb5.conf variables are only for MIT Kerberos.$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
@@ -233,7 +233,7 @@ describe 'kerberos', :type => :class do
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^\[libdefaults\]$}
       ) }
-      it { should contain_concat__fragment('krb5_libdefaults').with_content(
+      xit { should contain_concat__fragment('krb5_libdefaults').with_content(
         %r{^# The following krb5.conf variables are only for MIT Kerberos.$}
       ) }
       it { should contain_concat__fragment('krb5_libdefaults').with_content(
