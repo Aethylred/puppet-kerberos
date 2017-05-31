@@ -67,7 +67,6 @@ class kerberos (
     ensure         => $concat_ensure,
     path           => $config_file,
     warn           => '# This file is managed by Puppet, changes may be overwritten.',
-    force          => true,
     ensure_newline => false,
     owner          => 'root',
     group          => 'root',

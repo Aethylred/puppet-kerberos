@@ -14,7 +14,6 @@ describe 'kerberos', :type => :class do
         'ensure'         => 'present',
         'path'           => '/etc/krb5.conf',
         'warn'           => '# This file is managed by Puppet, changes may be overwritten.',
-        'force'          => true,
         'ensure_newline' => false,
         'owner'          => 'root',
         'group'          => 'root',
