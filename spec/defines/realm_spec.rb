@@ -14,7 +14,7 @@ describe 'kerberos::realm', :type => :define do
       'include kerberos'
     end
     describe 'with no parameters' do
-      it { should raise_error(Puppet::Error, /Must pass kdc to Kerberos::Realm\[example.org\]/) }
+      it { should_not compile }
     end
     describe 'with the minimum kdc server string' do
       let :params do
@@ -137,7 +137,7 @@ describe 'kerberos::realm', :type => :define do
       'include kerberos'
     end
     describe 'with no parameters' do
-      it { should raise_error(Puppet::Error, /Must pass kdc to Kerberos::Realm\[example.org\]/) }
+      it { should_not compile }
     end
     describe 'with the minimum kdc server string' do
       let :params do
