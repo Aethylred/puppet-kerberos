@@ -6,9 +6,9 @@ fixtures:
   forge_modules:
     stdlib:
       repo: 'puppetlabs-stdlib'
-      ref:  '4.2.2'
+      ref:  '4.16.0'
     concat:
       repo: 'puppetlabs-concat'
-      ref:  '2.2.0'
+      ref:  '4.1.0'
   symlinks:
     kerberos: "#{source_dir}"
