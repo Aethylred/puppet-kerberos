@@ -1,6 +1,6 @@
 # This defines a mapping between a domain and a Kerberos realm
 define kerberos::domain_realm(
-  $realm
+  String $realm
 ) {
 
   $upcase_realm = upcase($realm)

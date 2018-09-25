@@ -4,39 +4,27 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class kerberos (
-  $ensure           = 'present',
-  $package          = $::kerberos::params::package,
-  $config_file      = $::kerberos::params::config_file,
-  $default_realm    = $::kerberos::params::default_realm,
-  $dns_lookup_realm = false,
-  $dns_lookup_kdc   = false,
-  $krb4_config      = $::kerberos::params::krb4_config,
-  $krb4_realms      = $::kerberos::params::krb4_realms,
-  $krb4_convert     = false,
-  $krb4_get_tickets = false,
-  $krb5_get_tickets = true,
-  $krb_run_aklog    = false,
-  $aklog_path       = undef,
-  $kdc_timesync     = '1',
-  $ccache_type      = '4',
-  $forwardable      = false,
-  $proxiable        = false,
-  $rdns             = true,
-  $ticket_lifetime  = undef,
-  $renew_lifetime   = undef
-) inherits kerberos::params {
-
-  validate_bool(
-    $krb4_convert,
-    $krb4_get_tickets,
-    $krb5_get_tickets,
-    $krb_run_aklog,
-    $forwardable,
-    $proxiable,
-    $rdns,
-    $dns_lookup_kdc,
-    $dns_lookup_realm
-  )
+  Enum['present', 'latest', 'absent'] $ensure,
+  Variant[String, Array[String]] $package,
+  Stdlib::Absolutepath $config_file,
+  String $default_realm,
+  Boolean $dns_lookup_realm,
+  Boolean $dns_lookup_kdc,
+  Stdlib::Absolutepath $krb4_config,
+  Stdlib::Absolutepath $krb4_realms,
+  Boolean $krb4_convert,
+  Boolean $krb4_get_tickets,
+  Boolean $krb5_get_tickets,
+  Boolean $krb_run_aklog,
+  String $kdc_timesync,
+  String $ccache_type,
+  Boolean $forwardable,
+  Boolean $proxiable,
+  Boolean $rdns,
+  Optional[Stdlib::Absolutepath] $aklog_path  = undef,
+  Optional[String] $ticket_lifetime           = undef,
+  Optional[String] $renew_lifetime            = undef
+) {
 
   case $ensure {
     'present': {

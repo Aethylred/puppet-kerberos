@@ -8,7 +8,6 @@ describe 'kerberos', :type => :class do
       }
     end
     describe 'with no parameters' do
-      it { should contain_class('kerberos::params') }
       it { should contain_package('krb5-user').with_ensure('installed') }
       it { should contain_concat('krb5_config').with(
         'ensure'         => 'present',
@@ -105,7 +104,6 @@ describe 'kerberos', :type => :class do
           :ensure => 'absent',
         }
       end
-      it { should contain_class('kerberos::params') }
       it { should contain_package('krb5-user').with_ensure('absent') }
       it { should contain_concat('krb5_config').with(
         'ensure'  => 'absent',
@@ -118,7 +116,6 @@ describe 'kerberos', :type => :class do
           :ensure => 'latest',
         }
       end
-      it { should contain_class('kerberos::params') }
       it { should contain_package('krb5-user').with_ensure('latest') }
       it { should contain_concat('krb5_config').with(
         'ensure'  => 'present',
@@ -212,7 +209,6 @@ describe 'kerberos', :type => :class do
       }
     end
     describe 'with no parameters' do
-      it { should contain_class('kerberos::params') }
       it { should contain_package('krb5-libs').with_ensure('installed') }
       it { should contain_package('krb5-workstation').with_ensure('installed') }
       it { should contain_concat('krb5_config').with(
@@ -296,7 +292,6 @@ describe 'kerberos', :type => :class do
           :ensure => 'absent',
         }
       end
-      it { should contain_class('kerberos::params') }
       it { should contain_package('krb5-libs').with_ensure('absent') }
       it { should contain_package('krb5-workstation').with_ensure('absent') }
       it { should contain_concat('krb5_config').with(
@@ -310,7 +305,6 @@ describe 'kerberos', :type => :class do
           :ensure => 'latest',
         }
       end
-      it { should contain_class('kerberos::params') }
       it { should contain_package('krb5-libs').with_ensure('latest') }
       it { should contain_package('krb5-workstation').with_ensure('latest') }
       it { should contain_concat('krb5_config').with(
@@ -395,16 +389,6 @@ describe 'kerberos', :type => :class do
         %r{^  krb_run_aklog   = true$}
       ) }
     end
-  end
-
-  context 'on an Unknown OS' do
-    let :facts do
-      {
-        :osfamily       => 'Unknown',
-        :concat_basedir => '/dne',
-      }
-    end
-    it { should raise_error(Puppet::Error, /The kerberos Puppet module does not support Unknown family of operating systems/) }
   end
 
 end

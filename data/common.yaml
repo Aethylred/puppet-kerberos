@@ -1,0 +1,18 @@
+---
+kerberos::ensure:           'present'
+kerberos::config_file:      '/etc/krb5.conf'
+kerberos::default_realm:    'LOCAL'
+kerberos::dns_lookup_realm: false
+kerberos::dns_lookup_kdc:   false
+kerberos::krb4_config:      '/etc/krb.conf'
+kerberos::krb4_realms:      '/etc/krb.realms'
+kerberos::krb4_convert:     false
+kerberos::krb4_get_tickets: false
+kerberos::krb5_get_tickets: true
+kerberos::krb_run_aklog:    false
+kerberos::kdc_timesync:     '1'
+kerberos::ccache_type:      '4'
+kerberos::forwardable:      false
+kerberos::proxiable:        false
+kerberos::rdns:             true
+

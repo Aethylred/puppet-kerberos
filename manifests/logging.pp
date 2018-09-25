@@ -1,14 +1,9 @@
 # This defines logging entries in the Kerberos config
 define kerberos::logging (
-  $key   = 'default',
-  $value = 'SYSLOG'
+  Enum['default', 'kdc', 'admin_server'] $key   = 'default',
+  String $value                                 = 'SYSLOG'
 ) {
 
-  validate_re($key,[
-    '^default$',
-    '^kdc$',
-    '^admin_server$'
-  ] )
   validate_re($value, [
     '^FILE[=|:].*$',
     '^STDERR$',
