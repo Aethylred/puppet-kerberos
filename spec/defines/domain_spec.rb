@@ -14,7 +14,7 @@ describe 'kerberos::domain_realm', :type => :define do
       "include kerberos\nkerberos::realm{'example.org': kdc => 'kerberos.example.org'}"
     end
     describe 'with no parameters' do
-      it { should raise_error(Puppet::Error, /Must pass realm to Kerberos::Domain_realm\[example.org\]/) }
+      it { should_not compile }
     end
     describe 'when setting the realm' do
       let :params do
@@ -44,7 +44,7 @@ describe 'kerberos::domain_realm', :type => :define do
       "include kerberos\nkerberos::realm{'example.org': kdc => 'kerberos.example.org'}"
     end
     describe 'with no parameters' do
-      it { should raise_error(Puppet::Error, /Must pass realm to Kerberos::Domain_realm\[example.org\]/) }
+      it { should_not compile }
     end
     describe 'when setting the realm' do
       let :params do
